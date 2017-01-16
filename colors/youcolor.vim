@@ -16,7 +16,7 @@ let g:colors_name = "youcolor"
 " prints a warning message
 function! s:Warn(msg)
   echohl WarningMsg
-  echomsg "sprinkles: " . a:msg
+  echomsg "youcolor: " . a:msg
   echohl NONE
 endfunction
 " ensures the given dictionary only contains rgb hex colors
@@ -57,14 +57,16 @@ endfunction
 let s:default_light = {
   \'text':       '16',
   \'background': '231',
-  \'black':      '16',   'dark_grey':      '59',
+  \'black':      '16',   'dark_grey':      '16',
   \'red':        '160',  'bright_red':     '196',
-  \'green':      '64',   'bright_green':   '113',
+  \'green':      '28',   'bright_green':   '28',
   \'yellow':     '178',  'bright_yellow':  '221',
-  \'blue':       '61',   'bright_blue':    '74',
-  \'magenta':    '96',   'bright_magenta': '139',
+  \'blue':       '31',   'bright_blue':    '24',
+  \'magenta':    '161',   'bright_magenta': '139',
   \'cyan':       '30',   'bright_cyan':    '80',
   \'white':      '188',  'bright_white':   '231',
+	\'grey':			 '244',	 'bright_grey':    '244',
+	\'lightgrey':			 '253',
   \}
 " Default cterm colors if background is *dark* and no custom palette is used.
 " This is the Tango theme from gnome-terminal.
@@ -87,9 +89,9 @@ else
   let s:palette = s:default_dark
 endif
 " override default colors with custom palette
-if exists("g:sprinkles_palette")
-  if s:CheckPalette(g:sprinkles_palette)
-    call extend(s:palette, g:sprinkles_palette)
+if exists("g:youcolor_palette")
+  if s:CheckPalette(g:youcolor_palette)
+    call extend(s:palette, g:youcolor_palette)
   else
     call s:Warn("using default palette instead")
   endif
@@ -114,16 +116,18 @@ let s:color_indices = [
 " Standard Syntax Highlighting Groups {{{
 call s:Style("Normal", s:text, s:background, "")
 ""           HIGHLIGHT GROUP   TEXT       BACKGROUND ATTRIBUTES
-call s:Style("Constant",       "",        "",        "")
+call s:Style("Constant",       s:cyan,        "",        "")
 call s:Style("Identifier",     "",        "",        "")
 call s:Style("Ignore",         "",        "",        "")
 call s:Style("Type",           "",        "",        "")
 call s:Style("Statement",      "",        "",        "bold")
-call s:Style("Comment",        s:blue,    "",        "")
+call s:Style("Comment",        s:green,    "",        "")
+call s:Style("Number",         s:magenta,    "",        "")
+call s:Style("Function",       s:green,    "",        "bold")
 call s:Style("String",         s:red,     "",        "")
 call s:Style("Special",        s:magenta, "",        "")
 call s:Style("SpecialComment", s:blue,    "",        "")
-call s:Style("PreProc",        s:magenta, "",        "")
+call s:Style("PreProc",        s:grey, "",        "bold")
 call s:Style("Underlined",     "",        "",        "underline")
 call s:Style("Error",          s:white,   s:red,     "bold")
 call s:Style("Todo",           s:black,   s:yellow,  "")
@@ -138,6 +142,7 @@ call s:Style("javascriptIdentifier", "",  "",        "bold")
 call s:Style("luaFunction",    "",        "",        "bold")
 call s:Style("phpDefine",      "",        "",        "bold")
 call s:Style("rubyDefine",     "",        "",        "bold")
+call s:Style("pythonFunction",     s:blue,        "",        "bold")
 " this might be a bit too invasive, but for some reason phpVarSelector doesn't
 " respond to normal styling
 highlight link phpVarSelector phpIdentifier
@@ -145,10 +150,11 @@ highlight link phpVarSelector phpIdentifier
 
 " Vim UI Highlight Groups {{{
 ""           HIGHLIGHT GROUP   TEXT       BACKGROUND ATTRIBUTES
-call s:Style("NonText",        s:cyan,    "",           "")
+call s:Style("NonText",        s:black,    s:lightgrey,           "")
+call s:Style("Statement",      s:black,    "",           "bold")
 call s:Style("SpecialKey",     s:cyan,    "",           "")
-call s:Style("LineNr",         s:cyan,    "",           "")
-call s:Style("CursorLineNr",   s:cyan,    "",           "")
+call s:Style("LineNr",         s:black,    "",           "bold")
+call s:Style("CursorLineNr",   s:red,    "",           "bold")
 call s:Style("ErrorMsg",       s:white,   s:red,        "bold")
 call s:Style("MoreMsg",        s:cyan,    "",           "")
 call s:Style("ModeMsg",        "",        "",           "bold")
@@ -162,14 +168,14 @@ call s:Style("VisualNOS",      "",        "",           "bold,underline")
 call s:Style("TabLine",        "",        "",           "")
 call s:Style("TabLineSel",     s:cyan,    "",           "")
 call s:Style("TabLineFill",    "",        "",           "")
-call s:Style("ColorColumn",    "",        s:red,        "")
+call s:Style("ColorColumn",    "",        s:lightgrey,        "")
 call s:Style("CursorColumn",   "",        "",           "reverse")
 call s:Style("CursorLine",     "",        "",           "underline")
 call s:Style("VertSplit",      "",        "",           "reverse")
 call s:Style("StatusLine",     "",        "",           "reverse,bold")
 call s:Style("StatusLineNC",   "",        "",           "reverse")
 call s:Style("WildMenu",       s:white,   s:magenta,    "bold")
-call s:Style("Search",         s:black,   s:yellow,     "")
+call s:Style("Search",         s:black,   "",     "")
 call s:Style("IncSearch",      s:black,   s:cyan,       "")
 call s:Style("Directory",      s:blue,    "",           "bold")
 call s:Style("DiffAdd",        s:green,   "",           "")
@@ -177,8 +183,8 @@ call s:Style("DiffDelete",     s:red,     "",           "bold")
 call s:Style("DiffChange",     s:magenta, "",           "")
 call s:Style("DiffText",       s:magenta, "",           "bold")
 call s:Style("Folded",         s:cyan,    "",           "")
-call s:Style("FoldColumn",     s:cyan,    "",           "")
-call s:Style("SignColumn",     s:cyan,    "",           "")
+call s:Style("FoldColumn",     s:black,    "",           "bold")
+call s:Style("SignColumn",     s:black,    "",           "")
 call s:Style("Pmenu",          s:white,   s:magenta,    "")
 call s:Style("PmenuSel",       "",        "",           "reverse")
 call s:Style("PmenuSbar",      "",        s:white,      "")

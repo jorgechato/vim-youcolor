@@ -8,7 +8,7 @@ It is based on [sprinkles](https://github.com/ajgrf/sprinkles). I strongly recom
 
 Vim-youcolor can be installed in the same way as most other vim plugins and
 colorscheme. If you don't know how to install vim plugins, I recommend
-installing sprinkles using Vundle.
+installing youcolor using Vundle.
 
 ```vim
 Plugin 'orggue/vim-youcolor'
@@ -16,10 +16,10 @@ Plugin 'orggue/vim-youcolor'
 
 ## Configuration
 
-You can define a custom color palette for sprinkles to use, with the caveats
-described above. Just define the variable `g:sprinkles_palette` in your vimrc:
+You can define a custom color palette for youcolor to use, with the caveats
+described above. Just define the variable `g:youcolor_palette` in your vimrc:
 
-    let g:sprinkles_palette = {
+    let g:youcolor_palette = {
       \'text':       '16',
       \'background': '231',
       \'black':      '16',   'dark_grey':      '59',
