@@ -19,16 +19,20 @@ Plugin 'orggue/vim-youcolor'
 You can define a custom color palette for youcolor to use, with the caveats
 described above. Just define the variable `g:youcolor_palette` in your vimrc:
 
-    let g:youcolor_palette = {
-      \'text':       '16',
-      \'background': '231',
-      \'black':      '16',   'dark_grey':      '59',
-      \'red':        '160',  'bright_red':     '196',
-      \'green':      '64',   'bright_green':   '113',
-      \'yellow':     '178',  'bright_yellow':  '221',
-      \'blue':       '61',   'bright_blue':    '74',
-      \'magenta':    '96',   'bright_magenta': '139',
-      \'cyan':       '30',   'bright_cyan':    '80',
-      \'white':      '188',  'bright_white':   '231',
-      \}
-    colorscheme youcolor
+```vim
+let g:youcolor_palette = {
+\'text':       '16',
+\'background': '231',
+\'black':      '16',   'dark_grey':      '16',
+\'red':        '160',  'bright_red':     '196',
+\'green':      '28',   'bright_green':   '28',
+\'yellow':     '178',  'bright_yellow':  '221',
+\'blue':       '31',   'bright_blue':    '24',
+\'magenta':    '161',   'bright_magenta': '139',
+\'cyan':       '30',   'bright_cyan':    '80',
+\'white':      '188',  'bright_white':   '231',
+\'grey':			 '244',	 'bright_grey':    '244',
+\'lightgrey':			 '253',
+\}
+colorscheme youcolor
+```

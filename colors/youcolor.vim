@@ -73,14 +73,16 @@ let s:default_light = {
 let s:default_dark = {
   \'text':       '16',
   \'background': '231',
-  \'black':      '16',   'dark_grey':      '59',
+  \'black':      '16',   'dark_grey':      '16',
   \'red':        '160',  'bright_red':     '196',
-  \'green':      '64',   'bright_green':   '113',
+  \'green':      '28',   'bright_green':   '28',
   \'yellow':     '178',  'bright_yellow':  '221',
-  \'blue':       '61',   'bright_blue':    '74',
-  \'magenta':    '96',   'bright_magenta': '139',
+  \'blue':       '31',   'bright_blue':    '24',
+  \'magenta':    '161',   'bright_magenta': '139',
   \'cyan':       '30',   'bright_cyan':    '80',
   \'white':      '188',  'bright_white':   '231',
+	\'grey':			 '244',	 'bright_grey':    '244',
+	\'lightgrey':			 '253',
   \}
 " choose default colors based on background
 if &background == "light"
@@ -117,21 +119,21 @@ let s:color_indices = [
 call s:Style("Normal", s:text, s:background, "")
 ""           HIGHLIGHT GROUP   TEXT       BACKGROUND ATTRIBUTES
 call s:Style("Constant",       s:cyan,        "",        "")
-call s:Style("Identifier",     "",        "",        "")
-call s:Style("Ignore",         "",        "",        "")
-call s:Style("Type",           "",        "",        "")
-call s:Style("Statement",      "",        "",        "bold")
-call s:Style("Comment",        s:green,    "",        "")
-call s:Style("Number",         s:magenta,    "",        "")
-call s:Style("Function",       s:green,    "",        "bold")
-call s:Style("String",         s:red,     "",        "")
-call s:Style("Special",        s:magenta, "",        "")
-call s:Style("SpecialComment", s:blue,    "",        "")
-call s:Style("PreProc",        s:grey, "",        "bold")
-call s:Style("Underlined",     "",        "",        "underline")
-call s:Style("Error",          s:white,   s:red,     "bold")
-call s:Style("Todo",           s:black,   s:yellow,  "")
-call s:Style("MatchParen",     "",        s:cyan,    "")
+call s:Style("Identifier",     "",            "",        "")
+call s:Style("Ignore",         "",            "",        "")
+call s:Style("Type",           "",            "",        "")
+call s:Style("Statement",      "",            "",        "bold")
+call s:Style("Comment",        s:green,       "",        "")
+call s:Style("Number",         s:magenta,     "",        "")
+call s:Style("Function",       s:green,       "",        "bold")
+call s:Style("String",         s:red,         "",        "")
+call s:Style("Special",        s:black,     "",        "")
+call s:Style("SpecialComment", s:blue,        "",        "")
+call s:Style("PreProc",        s:grey,        "",        "bold")
+call s:Style("Underlined",     "",            "",        "underline")
+call s:Style("Error",          s:white,       s:red,     "bold")
+call s:Style("Todo",           s:black,       s:yellow,  "")
+call s:Style("MatchParen",     "",            s:cyan,    "")
 " }}}
 
 " FileType-specific Tweaks {{{
@@ -152,46 +154,46 @@ highlight link phpVarSelector phpIdentifier
 ""           HIGHLIGHT GROUP   TEXT       BACKGROUND ATTRIBUTES
 call s:Style("NonText",        s:black,    s:lightgrey,           "")
 call s:Style("Statement",      s:black,    "",           "bold")
-call s:Style("SpecialKey",     s:cyan,    "",           "")
+call s:Style("SpecialKey",     s:cyan,     "",           "")
 call s:Style("LineNr",         s:black,    "",           "bold")
-call s:Style("CursorLineNr",   s:red,    "",           "bold")
-call s:Style("ErrorMsg",       s:white,   s:red,        "bold")
-call s:Style("MoreMsg",        s:cyan,    "",           "")
-call s:Style("ModeMsg",        "",        "",           "bold")
-call s:Style("Question",       s:cyan,    "",           "")
-call s:Style("Title",          s:magenta, "",           "")
-call s:Style("WarningMsg",     s:red,     "",           "")
-call s:Style("Cursor",         s:text,    s:background, "reverse")
-call s:Style("lCursor",        s:text,    s:background, "reverse")
-call s:Style("Visual",         "",        "",           "reverse")
-call s:Style("VisualNOS",      "",        "",           "bold,underline")
-call s:Style("TabLine",        "",        "",           "")
-call s:Style("TabLineSel",     s:cyan,    "",           "")
-call s:Style("TabLineFill",    "",        "",           "")
-call s:Style("ColorColumn",    "",        s:lightgrey,        "")
-call s:Style("CursorColumn",   "",        "",           "reverse")
-call s:Style("CursorLine",     "",        "",           "underline")
-call s:Style("VertSplit",      "",        "",           "reverse")
-call s:Style("StatusLine",     "",        "",           "reverse,bold")
-call s:Style("StatusLineNC",   "",        "",           "reverse")
-call s:Style("WildMenu",       s:white,   s:magenta,    "bold")
-call s:Style("Search",         s:black,   "",     "")
-call s:Style("IncSearch",      s:black,   s:cyan,       "")
-call s:Style("Directory",      s:blue,    "",           "bold")
-call s:Style("DiffAdd",        s:green,   "",           "")
-call s:Style("DiffDelete",     s:red,     "",           "bold")
-call s:Style("DiffChange",     s:magenta, "",           "")
-call s:Style("DiffText",       s:magenta, "",           "bold")
-call s:Style("Folded",         s:cyan,    "",           "")
+call s:Style("CursorLineNr",   s:red,      "",           "bold")
+call s:Style("ErrorMsg",       s:white,    s:red,        "bold")
+call s:Style("MoreMsg",        s:cyan,     "",           "")
+call s:Style("ModeMsg",        "",         "",           "bold")
+call s:Style("Question",       s:cyan,     "",           "")
+call s:Style("Title",          s:magenta,  "",           "")
+call s:Style("WarningMsg",     s:red,      "",           "")
+call s:Style("Cursor",         s:text,     s:background, "reverse")
+call s:Style("lCursor",        s:text,     s:background, "reverse")
+call s:Style("Visual",         "",         "",           "reverse")
+call s:Style("VisualNOS",      "",         "",           "bold,underline")
+call s:Style("TabLine",        "",         "",           "")
+call s:Style("TabLineSel",     s:cyan,     "",           "")
+call s:Style("TabLineFill",    "",         "",           "")
+call s:Style("ColorColumn",    "",         s:lightgrey,        "")
+call s:Style("CursorColumn",   "",         "",           "reverse")
+call s:Style("CursorLine",     "",         "",           "bold")
+call s:Style("VertSplit",      "",         "",           "reverse")
+call s:Style("StatusLine",     s:red,         s:red,           "")
+call s:Style("StatusLineNC",   s:red,         s:red,           "")
+call s:Style("WildMenu",       s:white,    s:magenta,    "bold")
+call s:Style("Search",         s:black,    "",     "")
+call s:Style("IncSearch",      s:black,    s:cyan,       "")
+call s:Style("Directory",      s:blue,     "",           "bold")
+call s:Style("DiffAdd",        s:green,    "",           "")
+call s:Style("DiffDelete",     s:red,      "",           "bold")
+call s:Style("DiffChange",     s:magenta,  "",           "")
+call s:Style("DiffText",       s:magenta,  "",           "bold")
+call s:Style("Folded",         s:cyan,     "",           "")
 call s:Style("FoldColumn",     s:black,    "",           "bold")
 call s:Style("SignColumn",     s:black,    "",           "")
-call s:Style("Pmenu",          s:white,   s:magenta,    "")
-call s:Style("PmenuSel",       "",        "",           "reverse")
-call s:Style("PmenuSbar",      "",        s:white,      "")
-call s:Style("PmenuThumb",     "",        s:black,      "")
-call s:Style("SpellBad",       "",        s:red,        "")
-call s:Style("SpellCap",       "",        s:green,      "")
-call s:Style("SpellRare",      "",        s:green,      "")
-call s:Style("SpellLocal",     "",        s:green,      "")
+call s:Style("Pmenu",          s:black,    s:magenta,    "")
+call s:Style("PmenuSel",       "",         "",           "reverse")
+call s:Style("PmenuSbar",      "",         s:white,      "")
+call s:Style("PmenuThumb",     "",         s:black,      "")
+call s:Style("SpellBad",       "",         s:red,        "")
+call s:Style("SpellCap",       "",         s:yellow,      "")
+call s:Style("SpellRare",      "",         s:yellow,      "")
+call s:Style("SpellLocal",     "",         s:yellow,      "")
 " Purposefully left unset: Conceal
 " }}}
